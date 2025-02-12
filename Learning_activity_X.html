@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            transition: background 0.3s, color 0.3s;
+            background: white;
+            color: black;
+        }
+
+        .dark-mode {
+            background: black;
+            color: white;
+        }
+
+        .button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-theme {
+            background: gray;
+            color: white;
+        }
+
+        .change-language {
+            background: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button class="toggle-theme" onclick="toggleTheme()">🌙 Modo Oscuro</button>
+    </div>
+
+    <h1 id="greeting">Hola Mundo</h1>
+    <button class="change-language" onclick="toggleLanguage()">Cambiar a Inglés</button>
+
+    <script>
+        let isDarkMode = false;
+        let isSpanish = true;
+
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle("dark-mode");
+
+            const themeButton = document.querySelector(".toggle-theme");
+            themeButton.textContent = isDarkMode ? "☀️ Modo Claro" : "🌙 Modo Oscuro";
+        }
+
+        function toggleLanguage() {
+            isSpanish = !isSpanish;
+
+            document.getElementById("greeting").textContent = isSpanish ? "Hola Mundo" : "Hello World";
+            document.querySelector(".change-language").textContent = isSpanish ? "Cambiar a Inglés" : "Switch to Spanish";
+            document.querySelector(".toggle-theme").textContent = isDarkMode
+                ? (isSpanish ? "☀️ Modo Claro" : "☀️ Light Mode")
+                : (isSpanish ? "🌙 Modo Oscuro" : "🌙 Dark Mode");
+        }
+    </script>
+
+</body>
+</html>
